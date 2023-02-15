@@ -1,0 +1,73 @@
+{
+    "name": "timacdonald/has-parameters",
+    "description": "A trait that allows you to pass arguments to Laravel middleware in a more PHP'ish way.",
+    "license": "MIT",
+    "keywords": [
+        "laravel",
+        "middleware",
+        "parameters",
+        "arguments"
+    ],
+    "authors": [
+        {
+            "name": "Tim MacDonald",
+            "email": "hello@timacdonald.me",
+            "homepage": "https://timacdonald.me"
+        }
+    ],
+    "support": {
+        "issues": "https://github.com/timacdonald/has-parameters/issues",
+        "source": "https://github.com/timacdonald/has-parameters/releases/latest",
+        "docs": "https://github.com/timacdonald/has-parameters/blob/master/readme.md"
+    },
+    "require": {
+        "php": "^7.1 || ^8.0",
+        "illuminate/support": "~5.5.0 || ~5.6.0 || ~5.7.0 || ~5.8.0 || ^6.0 || ^7.0 || ^8.0 || ^9.0",
+        "illuminate/http": "~5.5.0 || ~5.6.0 || ~5.7.0 || ~5.8.0 || ^6.0 || ^7.0 || ^8.0 || ^9.0"
+    },
+    "require-dev": {
+        "bamarni/composer-bin-plugin": "^1.4"
+    },
+    "minimum-stability": "stable",
+    "prefer-stable": true,
+    "autoload": {
+        "psr-4": {
+            "TiMacDonald\\Middleware\\": "src"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Tests\\": "tests/"
+        }
+    },
+    "config": {
+        "allow-plugins": {
+            "bamarni/composer-bin-plugin": true
+        },
+        "preferred-install": "dist",
+        "sort-packages": true
+    },
+    "scripts": {
+        "bin": "echo 'bin not installed'",
+        "post-install-cmd": [
+            "@composer bin all install --ansi"
+        ],
+        "post-update-cmd": [
+            "@composer bin all update --ansi"
+        ],
+        "fix": [
+            "clear",
+            "./vendor/bin/php-cs-fixer fix"
+        ],
+        "lint": [
+            "clear",
+            "./vendor/bin/php-cs-fixer fix --dry-run",
+            "./vendor/bin/phpstan analyse"
+        ],
+        "test": [
+            "clear",
+            "./vendor/bin/phpunit",
+            "./vendor/bin/infection --threads=8"
+        ]
+    }
+}
